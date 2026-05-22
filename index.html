@@ -1,469 +1,639 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curriculum Vitae</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-<style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,300&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-:root {
-  --bg: #0f0f0f;
-  --surface: #161616;
-  --surface2: #1e1e1e;
-  --border: #2a2a2a;
-  --accent: #c8f065;
-  --accent2: #65d4f0;
-  --text: #f0ede8;
-  --muted: #888;
-  --faint: #444;
-  --serif: 'Fraunces', Georgia, serif;
-  --sans: 'Plus Jakarta Sans', sans-serif;
-}
+        :root {
+            --bg: #0f0f0f;
+            --surface: #161616;
+            --surface2: #1e1e1e;
+            --border: #2a2a2a;
+            --accent: #c8f065;
+            --accent2: #65d4f0;
+            --text: #f0ede8;
+            --muted: #888;
+            --faint: #444;
+            --serif: 'Fraunces', Georgia, serif;
+            --sans: 'Plus Jakarta Sans', sans-serif;
+        }
 
-@media print {
-  body { background: #fff !important; }
-  .fab-bar { display: none !important; }
-}
+        @media print {
+            body {
+                background: #fff !important;
+            }
 
-html { scroll-behavior: smooth; }
+            .fab-bar {
+                display: none !important;
+            }
+        }
 
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-.page {
-  max-width: 900px;
-  margin: 48px auto;
-  padding: 0 24px;
-}
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
 
-.hero {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 52px 52px 44px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 32px;
-  align-items: end;
-  margin-bottom: 16px;
-  position: relative;
-  overflow: hidden;
-}
+        .page {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 240px; height: 240px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200,240,101,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
+        .hero {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 52px 52px 44px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: end;
+            margin-bottom: 16px;
+            position: relative;
+            overflow: hidden;
+        }
 
-.hero-name {
-  font-family: var(--serif);
-  font-size: 58px;
-  font-weight: 300;
-  line-height: 1.0;
-  color: var(--text);
-  letter-spacing: -1px;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200, 240, 101, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-.hero-name em { font-style: italic; color: var(--accent); }
+        .hero-name {
+            font-family: var(--serif);
+            font-size: 58px;
+            font-weight: 300;
+            line-height: 1.0;
+            color: var(--text);
+            letter-spacing: -1px;
+        }
 
-.hero-title {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--muted);
-  letter-spacing: 0.4px;
-  margin-top: 10px;
-}
+        .hero-name em {
+            font-style: italic;
+            color: var(--accent);
+        }
 
-.hero-tag {
-  display: inline-block;
-  background: rgba(200,240,101,0.1);
-  border: 1px solid rgba(200,240,101,0.25);
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 100px;
-  margin-top: 16px;
-}
+        .hero-title {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--muted);
+            letter-spacing: 0.4px;
+            margin-top: 10px;
+        }
 
-.avatar {
-  width: 96px; height: 96px;
-  border-radius: 50%;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--serif);
-  font-size: 32px; font-weight: 300;
-  color: var(--accent);
-  overflow: hidden; flex-shrink: 0;
-}
+        .hero-tag {
+            display: inline-block;
+            background: rgba(200, 240, 101, 0.1);
+            border: 1px solid rgba(200, 240, 101, 0.25);
+            color: var(--accent);
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 100px;
+            margin-top: 16px;
+        }
 
-.avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 16px;
-  align-items: start;
-}
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            scale: 0.85;          /* 👈 Bajado de 1.1 a 0.85 para alejar la imagen */
+            object-position: center 20%; /* 👈 Centra la altura para que no se corte la cabeza */
+            border-radius: 50%;
+        }
 
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  margin-bottom: 16px;
-}
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 16px;
+            align-items: start;
+        }
 
-.card-title {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 16px;
+        }
 
-.card-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
+        .card-title {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-.sobre {
-  font-family: var(--serif);
-  font-size: 17px;
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.8;
-  color: #bbb;
-}
+        .card-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
 
-.exp-item { padding: 20px 0; border-bottom: 1px solid var(--border); }
-.exp-item:first-child { padding-top: 0; }
-.exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .sobre {
+            font-family: var(--serif);
+            font-size: 17px;
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.8;
+            color: #bbb;
+        }
 
-.exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 4px;
-}
+        .exp-item {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
 
-.exp-title { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.3; }
+        .exp-item:first-child {
+            padding-top: 0;
+        }
 
-.exp-date {
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  padding: 3px 10px;
-  border-radius: 100px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+        .exp-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
 
-.exp-company { font-size: 12.5px; color: var(--accent2); font-weight: 500; margin-bottom: 10px; }
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
 
-.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+        .exp-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.3;
+        }
 
-.exp-bullets li {
-  font-size: 13px; color: #888; line-height: 1.6;
-  padding-left: 16px; position: relative;
-}
+        .exp-date {
+            font-size: 11px;
+            color: var(--muted);
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            padding: 3px 10px;
+            border-radius: 100px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
 
-.exp-bullets li::before {
-  content: '→';
-  position: absolute; left: 0;
-  color: var(--faint); font-size: 11px; top: 2px;
-}
+        .exp-company {
+            font-size: 12.5px;
+            color: var(--accent2);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
 
-.contact-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 9px 0; border-bottom: 1px solid var(--border);
-  font-size: 13px; color: #aaa;
-}
-.contact-item:last-child { border-bottom: none; }
+        .exp-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
 
-.contact-icon {
-  width: 28px; height: 28px;
-  border-radius: 8px;
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon svg { width: 13px; height: 13px; stroke: var(--muted); }
+        .exp-bullets li {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+        }
 
-/* ── SIN EXPERIENCIA ── */
-.no-exp-note {
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.7;
-}
+        .exp-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--faint);
+            font-size: 11px;
+            top: 2px;
+        }
 
-.no-exp-badge {
-  display: inline-block;
-  margin-top: 12px;
-  background: rgba(101,212,240,0.08);
-  border: 1px solid rgba(101,212,240,0.2);
-  color: var(--accent2);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 100px;
-}
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            color: #aaa;
+        }
 
-.pdf-section {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 32px;
-  max-width: 900px;
-  margin: 0 auto 48px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
+        .contact-item:last-child {
+            border-bottom: none;
+        }
 
-.pdf-section-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.pdf-section-sub { font-size: 12.5px; color: var(--muted); }
+        .contact-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-.pdf-btn {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--accent); color: #0f0f0f;
-  border: none; border-radius: 100px;
-  font-family: var(--sans); font-size: 13px; font-weight: 600;
-  padding: 13px 28px; cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s;
-  white-space: nowrap; flex-shrink: 0;
-}
-.pdf-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(200,240,101,0.25); }
-.pdf-btn:active { transform: scale(0.97); }
-.pdf-btn svg { width: 16px; height: 16px; }
-.pdf-btn.loading { opacity: 0.7; pointer-events: none; }
+        .contact-icon svg {
+            width: 13px;
+            height: 13px;
+            stroke: var(--muted);
+        }
 
-.lang-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px;
-}
-.lang-row:last-child { border-bottom: none; }
-.lang-name { color: var(--text); font-weight: 500; }
-.lang-level {
-  font-size: 11px; background: var(--surface2);
-  border: 1px solid var(--border); color: var(--muted);
-  padding: 3px 8px; border-radius: 100px;
-}
+        /* ── SIN EXPERIENCIA ── */
+        .no-exp-note {
+            font-size: 13px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
 
-.tags { display: flex; flex-wrap: wrap; gap: 7px; }
-.tag {
-  font-size: 12px; font-weight: 500; color: var(--muted);
-  background: var(--surface2); border: 1px solid var(--border);
-  padding: 5px 12px; border-radius: 100px; transition: all 0.2s;
-}
-.tag:hover { border-color: var(--accent); color: var(--accent); cursor: default; }
+        .no-exp-badge {
+            display: inline-block;
+            margin-top: 12px;
+            background: rgba(101, 212, 240, 0.08);
+            border: 1px solid rgba(101, 212, 240, 0.2);
+            color: var(--accent2);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 100px;
+        }
 
-@media print {
-  :root {
-    --bg: #fff; --surface: #fff; --surface2: #f5f5f5;
-    --border: #e0e0e0; --text: #111; --muted: #666; --faint: #ccc;
-    --accent: #3a7d00; --accent2: #0070a0;
-  }
-  body { background: #fff; padding-bottom: 0; }
-  .pdf-section { display: none !important; }
-  .page { margin-top: 0; padding: 0; }
-  .hero::before { display: none; }
-}
-</style>
+        .pdf-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            max-width: 900px;
+            margin: 0 auto 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .pdf-section-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .pdf-section-sub {
+            font-size: 12.5px;
+            color: var(--muted);
+        }
+
+        .pdf-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #0f0f0f;
+            border: none;
+            border-radius: 100px;
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 13px 28px;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .pdf-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(200, 240, 101, 0.25);
+        }
+
+        .pdf-btn:active {
+            transform: scale(0.97);
+        }
+
+        .pdf-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .pdf-btn.loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .lang-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+        }
+
+        .lang-row:last-child {
+            border-bottom: none;
+        }
+
+        .lang-name {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .lang-level {
+            font-size: 11px;
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 3px 8px;
+            border-radius: 100px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tag {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--muted);
+            background: var(--surface2);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 100px;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            cursor: default;
+        }
+
+        @media print {
+            :root {
+                --bg: #fff;
+                --surface: #fff;
+                --surface2: #f5f5f5;
+                --border: #e0e0e0;
+                --text: #111;
+                --muted: #666;
+                --faint: #ccc;
+                --accent: #3a7d00;
+                --accent2: #0070a0;
+            }
+
+            body {
+                background: #fff;
+                padding-bottom: 0;
+            }
+
+            .pdf-section {
+                display: none !important;
+            }
+
+            .page {
+                margin-top: 0;
+                padding: 0;
+            }
+
+            .hero::before {
+                display: none;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="page" id="cv-content">
+    <div class="page" id="cv-content">
 
-  <div class="hero">
-    <div>
-      <h1 class="hero-name"><em>Anxo</em><br>Ferreira Bouzas</h1>
-      <p class="hero-title">Desarrollador de aplicaciones multiplataforma</p>
+        <div class="hero">
+            <div>
+                <h1 class="hero-name"><em>Anxo</em><br>Ferreira Bouzas</h1>
+                <p class="hero-title">Desarrollador de aplicaciones multiplataforma</p>
+            </div>
+            <div class="avatar">
+                <img src="https://i.ibb.co/PGX8zcS7/7056befe-2b3b-46fe-b158-545f8c6924bd.png" alt="Anxo Ferreira Bouzas">
+            </div>
+        </div>
+
+        <div class="grid">
+
+            <div>
+
+                <div class="card">
+                    <p class="card-title">Sobre mí</p>
+                    <p class="sobre">
+                        Apasionado por la tecnología y todo lo que la rodea, busco oportunidades para demostrar mi valor
+                        y poder escalar personal y profesionalmente.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Formación y titulaciones</p>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">CS de Desarrollo de Aplicaciones Multiplataforma</span>
+                            <span class="exp-date">2025 — 2027</span>
+                        </div>
+                        <p class="exp-company">CPR CEBEM</p>
+                        <ul class="exp-bullets">
+                            <li>Programación orientada a objetos.</li>
+                            <li>Diseño y gestión de bases de datos.</li>
+                            <li>Desarrollo de frontend y backend.</li>
+                            <li>Gestión de sistemas informáticos.</li>
+                        </ul>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <span class="exp-title">Bachillerato</span>
+                            <span class="exp-date">2022 — 2024</span>
+                        </div>
+                        <p class="exp-company">Salesianos Vigo</p>
+                        <ul class="exp-bullets">
+                            <li>Bachillerato en Ciencias</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Conocimientos</p>
+                    <div class="tags">
+                        <span class="tag">Bases de datos SQL</span>
+                        <span class="tag">Bases de datos NoSQL</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">SpringBoot</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="card">
+                    <p class="card-title">Contacto</p>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,12 2,6" />
+                            </svg>
+                        </div>
+                        anxoferreira07@gmail.com
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                        </div>
+                        +34 604 079 020
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                        </div>
+                        Vigo, España
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Habilidades</p>
+                    <p class="sobre" style="font-style:normal; font-size:14px; line-height:1.8;">
+                        Buen hábito de trabajo, compromiso y capacidad de adaptación. Resiliente, con ganas de aprender
+                        y crecer. Capacidad para trabajar en equipo y comunicarse de manera efectiva.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Idiomas</p>
+                    <div class="lang-row">
+                        <span class="lang-name">Español</span>
+                        <span class="lang-level">Nativo</span>
+                    </div>
+                    <div class="lang-row">
+                        <span class="lang-name">Inglés</span>
+                        <span class="lang-level">B2</span>
+                    </div>
+                    <div class="lang-row">
+                        <span class="lang-name">Gallego</span>
+                        <span class="lang-level">Celga 4</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <p class="card-title">Experiencia</p>
+                    <p class="no-exp-note">Actualmente en formación, sin experiencia laboral previa.</p>
+                    <span class="no-exp-badge">En búsqueda activa</span>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="avatar">
-      TN
-      <!-- <img src="foto.jpg" alt="Foto"> -->
-    </div>
-  </div>
 
-  <div class="grid">
-
-    <!-- ── COLUMNA IZQUIERDA ── -->
-    <div>
-
-      <div class="card">
-        <p class="card-title">Sobre mí</p>
-        <p class="sobre">
-          Apasionado por la tecnología y todo lo que la rodea, busco oportunidades para demostrar mi valor y poder escalar personal y profesionalmente.
-        </p>
-      </div>
-
-      <div class="card">
-        <p class="card-title">Formación y titulaciones</p>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">CS de Desarrollo de Aplicaciones Multiplataforma</span>
-            <span class="exp-date">2025 — 2027</span>
-          </div>
-          <p class="exp-company">CPR CEBEM</p>
-          <ul class="exp-bullets">
-            <li>Programación orientada a objetos.</li>
-            <li>Diseño y gestión de bases de datos.</li>
-            <li>Desarrollo de frontend y backend.</li>
-            <li>Gestión de sistemas informáticos.</li>
-          </ul>
+    <div class="pdf-section">
+        <div>
+            <p class="pdf-section-title">Exportar curriculum</p>
+            <p class="pdf-section-sub">Genera un PDF listo para enviar a empresas o imprimir</p>
         </div>
-
-        <div class="exp-item">
-          <div class="exp-header">
-            <span class="exp-title">Bachillerato</span>
-            <span class="exp-date">2022 — 2024</span>
-          </div>
-          <p class="exp-company">Salesianos Vigo</p>
-          <ul class="exp-bullets">
-            <li>Bachillerato en Ciencias</li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="card">
-        <p class="card-title">Conocimientos</p>
-        <div class="tags">
-          <span class="tag">Bases de datos SQL</span>
-          <span class="tag">Bases de datos NoSQL</span>
-          <span class="tag">Java</span>
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript</span>
-          <span class="tag">SpringBoot</span>
-          <span class="tag">Python</span>
-        </div>
-      </div>
-
+        <button class="pdf-btn" id="btn-pdf" onclick="descargarPDF()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Descargar PDF
+        </button>
     </div>
 
-    <!-- ── COLUMNA DERECHA ── -->
-    <div>
-
-      <div class="card">
-        <p class="card-title">Contacto</p>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
-          </div>
-          anxoferreira07@gmail.com
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          +34 604 079 020
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          Vigo, España
-        </div>
-      </div>
-
-      <div class="card">
-        <p class="card-title">Habilidades</p>
-        <p class="sobre" style="font-style:normal; font-size:14px; line-height:1.8;">
-           Buen hábito de trabajo, compromiso y capacidad de adaptación. Resiliente, con ganas de aprender y crecer. Capacidad para trabajar en equipo y comunicarse de manera efectiva.
-        </p>
-      </div>
-
-      <div class="card">
-        <p class="card-title">Idiomas</p>
-        <div class="lang-row">
-          <span class="lang-name">Español</span>
-          <span class="lang-level">Nativo</span>
-        </div>
-        <div class="lang-row">
-          <span class="lang-name">Inglés</span>
-          <span class="lang-level">B2</span>
-        </div>
-        <div class="lang-row">
-          <span class="lang-name">Gallego</span>
-          <span class="lang-level">Celga 4</span>
-        </div>
-      </div>
-
-      <!-- EXPERIENCIA -->
-      <div class="card">
-        <p class="card-title">Experiencia</p>
-        <p class="no-exp-note">Actualmente en formación, sin experiencia laboral previa.</p>
-        <span class="no-exp-badge">En búsqueda activa</span>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="pdf-section">
-  <div>
-    <p class="pdf-section-title">Exportar curriculum</p>
-    <p class="pdf-section-sub">Genera un PDF listo para enviar a empresas o imprimir</p>
-  </div>
-  <button class="pdf-btn" id="btn-pdf" onclick="descargarPDF()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-      <polyline points="7 10 12 15 17 10"/>
-      <line x1="12" y1="15" x2="12" y2="3"/>
-    </svg>
-    Descargar PDF
-  </button>
-</div>
-
-<script>
-function descargarPDF() {
-  const btn = document.getElementById('btn-pdf');
-  btn.classList.add('loading');
-  btn.textContent = 'Generando PDF…';
-  const el = document.getElementById('cv-content');
-  const opt = {
-    margin: 0,
-    filename: 'curriculum-vitae.pdf',
-    image: { type: 'jpeg', quality: 0.98 },
-    html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0f0f0f' },
-    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-  };
-  html2pdf().set(opt).from(el).save().then(() => {
-    btn.classList.remove('loading');
-    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar PDF`;
-  });
-}
-</script>
+    <script>
+        function descargarPDF() {
+            const btn = document.getElementById('btn-pdf');
+            btn.classList.add('loading');
+            btn.textContent = 'Generando PDF…';
+            const el = document.getElementById('cv-content');
+            const opt = {
+                margin: 0,
+                filename: 'curriculum-vitae.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, backgroundColor: '#0f0f0f' },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(el).save().then(() => {
+                btn.classList.remove('loading');
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Descargar PDF`;
+            });
+        }
+    </script>
 
 </body>
+
 </html>
